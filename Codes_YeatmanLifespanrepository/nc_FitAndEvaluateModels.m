@@ -1,4 +1,4 @@
-function [R2, sqErr, yhat, coef] = nc_FitAndEvaluateModels(y, x, model,crossvalidate,bootIter, params)
+function [sqErr, yhat, coef] = nc_FitAndEvaluateModels(y, x, model,crossvalidate,bootIter, params)
 % Calculate R2 using leave one out cross validation for a variety of models
 %
 % [R2, sqErr, yhat, coef] = nc_FitAndEvaluateModels(y, x, model,crossvalidate,bootIter, params)
@@ -328,10 +328,7 @@ if crossvalidate == 1
     % Calculate the squared error for the model prediction
     sqErr = (y - yhat).^2;
     
-    % Calculate crossvalidated R2
-    R2 = calccod(yhat,y);
 else
-    R2 = nan;
 end
 
 

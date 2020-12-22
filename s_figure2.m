@@ -7,7 +7,7 @@ function s_figure2
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/TractVolume_Main/
+cd Data/TractVolume_Main/
 
 FileToLoad{1}='CH_tractvolume_main.mat';
 FileToLoad{2}='ADO_tractvolume_main.mat';

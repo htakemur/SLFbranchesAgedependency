@@ -9,9 +9,9 @@ function s_figure4
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/FAqR1_Main/
+cd Data/FAqR1_Main/
 
-addpath(genpath('../../Codes_YeatmanLifespanrepository'));
+addpath(genpath('../Codes_YeatmanLifespanrepository'));
 
 FileToLoad{1}='CH_FAqR1_main.mat';
 FileToLoad{2}='ADO_FAqR1_main.mat';
@@ -43,7 +43,7 @@ end
 age(61:82) = [60 75 67 62 62 55 66 70 70 76 68 68 81 56 79 61 58 55 58 55 61 64];
 
 for k=1:6
-    [R2{k},sqErr{k},yhat{k},coef{k}]=nc_FitAndEvaluateModels(transpose(fa_plot(k,:)),transpose(age),'poisson',1,1000);
+    [sqErr{k},yhat{k},coef{k}]=nc_FitAndEvaluateModels(transpose(fa_plot(k,:)),transpose(age),'poisson',1,1000);
     switch k
         case 1,
             f=nc_PlotModelFits(coef{k},'fa',{'Left SLF I'},1,[.16 .68 .9]);

@@ -7,7 +7,7 @@ function s_figure3
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/FAqR1_Main/
+cd Data/FAqR1_Main/
 
 FileToLoad{1}='CH_FAqR1_main.mat';
 FileToLoad{2}='ADO_FAqR1_main.mat';
