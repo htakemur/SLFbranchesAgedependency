@@ -15,10 +15,15 @@ function f = nc_PlotModelFits(coefs,valName,fgNames,fgnums,color)
 %           fiber group (Left CST) will be plotted first.
 % color   - rgb values for each plot
 %
-% Copyright Jason D. Yeatman, August 2014. Code released with:
+% Copyright Jason D. Yeatman, August 2014. Original version of the code released with:
 % Yeatman JD, Wandell BA & Mezer AM (2014). Lifespan maturation 
 % and degeneration of human brain white matter. Nature Communications
 % Github repository hosting the original version of the code: https://github.com/jyeatman/lifespan
+%
+% 2020.12.22 Hiromasa Takemura released a modified version of this code for
+% reproducing the analysis of the following paper:
+% Amemiya, K., Naito, E. & Takemura, H. (2021)
+% Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
 
 % Open figure window
 figure;
@@ -62,9 +67,15 @@ elseif strcmp(valName, 'md')
 elseif strcmp(valName,'fa')
     ylims = [.3 .6];
     yticks = [.3 .45 .6];
-    YLab = 'Fractional Anisotropy';
+    YLab = 'FA';
     xtl = .013;
     mat = 'max';
+elseif strcmp(valName,'Res_FA')
+    ylims = [-0.2 .2];
+    yticks = [-0.2 0 .2];
+    YLab = 'Residual FA';
+    xtl = .013;
+    mat = 'max';    
 elseif strcmp(valName,'T1_map_lsq') || strcmp(valName,'T1_map_lsq_2DTI')
     ylims = [.8 1.4];
     yticks=[.8 1 1.2 1.4];
