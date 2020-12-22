@@ -58,6 +58,5 @@ for k=1:6
         case 6,
             f=nc_PlotModelFits(coef{k},'fa',{'Right SLF III'},1,[.76 0 .76]);
     end
-    close all
 end
 
