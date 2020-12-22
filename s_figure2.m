@@ -36,6 +36,6 @@ for ng = 1:6;
     er.LineStyle = 'none';
     ylim([0 20000])
     ylabel('Tract volume');
-    set(gca, 'XTickLabel', {'CH','ADO','AD','SEN'}, 'fontsize', 12);
+    set(gca, 'XTickLabel', {'CH','ADO','ADU','SEN'}, 'fontsize', 12);
     title(groupnames(ordernum(ng)))
 end

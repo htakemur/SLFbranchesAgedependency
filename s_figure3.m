@@ -30,6 +30,7 @@ end
 groupnames = {'Left SLF I', 'Left SLF II', 'Left SLF III', 'Right SLF I', 'Right SLF II', 'Right SLF III'};
 ordernum = [1 4 2 5 3 6];
 
+% Create bar plot
 for ng = 1:6;
     subplot (3,2,ng)
     h = bar(transpose(fa_mean(ordernum(ng),:)));
@@ -39,6 +40,6 @@ for ng = 1:6;
     er.LineStyle = 'none';
     ylim([0.35 0.55])
     ylabel('FA');
-    set(gca, 'XTickLabel', {'CH','ADO','AD','SEN'}, 'fontsize', 12);
+    set(gca, 'XTickLabel', {'CH','ADO','ADU','SEN'}, 'fontsize', 12);
     title(groupnames(ordernum(ng)))
 end
