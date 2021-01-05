@@ -14,7 +14,6 @@ FileToLoad{2}='ADO_FAqR1_main.mat';
 FileToLoad{3}='ADU_FAqR1_main.mat';
 FileToLoad{4}='SEN_FAqR1_main.mat';
 
-% NOT eliminating NaN subject
 for i = 1:4
     % Load data
     load(FileToLoad{i});
