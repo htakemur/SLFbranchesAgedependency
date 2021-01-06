@@ -1,13 +1,14 @@
-function s_figure7_right
+function s_figureS13_right
 
-% Plot mean and standard deviation of the lateralization index of SLF I, II, and III qR1 in each age group. This script aims to reproduce the right panel of Figure 7 in a following article:
+% Plot mean and standard deviation of the lateralization index of SLF I, II, and III qR1 in each age group, by only including right-handed participants. 
+% This script aims to reproduce the right panel of Supplemenary Figure 13 in a following article:
 %
 % Amemiya, K., Naito, E. & Takemura, H. (2021)
 %  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd Data/FAqR1_Main/
+cd ../Data/FAqR1_Main/
 
 FileToLoad{1}='CH_FAqR1_main.mat';
 FileToLoad{2}='ADO_FAqR1_main.mat';
@@ -17,10 +18,21 @@ FileToLoad{4}='SEN_FAqR1_main.mat';
 for i = 1:4
     % Load data
     load(FileToLoad{i});
+     % Select right-handed participants
+    switch i
+        case 1
+            RH_subj = [1:15 17];
+        case 2
+            RH_subj = [1:2 4 7:11 13:20];
+        case 3
+            RH_subj = [5:7 9:11 13:17 19:22];
+        case 4
+            RH_subj = [1:11 13:17 19:21];
+    end       
     
     % Compute qR1 averaged from node 21 to node 80
     for k = 1:6
-        qr1_plot(:,k) = 1./squeeze(squeeze(mean(all_profile.qt1(21:80,k,:),1)));
+        qr1_plot(:,k) = 1./squeeze(squeeze(mean(all_profile.qt1(21:80,k,RH_subj),1)));
     end
     
     % Compute lateralization index

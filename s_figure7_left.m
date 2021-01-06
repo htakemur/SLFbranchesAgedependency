@@ -41,7 +41,6 @@ screensize = get(0, 'ScreenSize');
 groupnames = {'CH','ADO','ADU','SEN'};
 for ng = 1:4
     subplot (4,1,ng)
-    
     b = bar(SLF_LI_mean(:,ng));
     b.FaceColor = 'flat';
     b.CData(1,:) = [.16 .68 .9];
