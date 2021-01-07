@@ -79,4 +79,4 @@ er.LineStyle = 'none';
 ylim([-0.05 0.05])
 ylabel('Residual FA');
 set(gca, 'tickdir', 'out', 'box', 'off', 'ytick',ytick);
-set(gca, 'XTickLabel', {'CH','ADO','AD','EL'}, 'fontsize', 12);
+set(gca, 'XTickLabel', {'CH','ADO','ADU','SEN'}, 'fontsize', 12);
