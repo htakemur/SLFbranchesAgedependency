@@ -1,6 +1,6 @@
 function s_figureS10_left
 
-% Plot the spatial profile of the laterality index (LI) of fractional anisotropy (FA) along SLF I, II, and III volume in each age group.
+% Plot the spatial profile of the laterality index (LI) of fractional anisotropy (FA) along SLF I, II, and III in each age group.
 % This script aims to reproduce the left panel of Supplementary Figure 10 in a following article:
 %
 % Amemiya, K., Naito, E. & Takemura, H. (2021)

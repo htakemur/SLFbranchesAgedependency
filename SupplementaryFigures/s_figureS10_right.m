@@ -1,6 +1,6 @@
 function s_figureS10_right
 
-% Plot the spatial profile of the laterality index (LI) of quantitative R1 (qR1) along SLF I, II, and III volume in each age group.
+% Plot the spatial profile of the laterality index (LI) of quantitative R1 (qR1) along SLF I, II, and III in each age group.
 % This script aims to reproduce the right panel of Supplementary Figure 10 in a following article:
 %
 % Amemiya, K., Naito, E. & Takemura, H. (2021)
