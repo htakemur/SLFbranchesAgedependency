@@ -67,7 +67,7 @@ elseif strcmp(valName,'T1_map_lsq') || strcmp(valName,'T1_map_lsq_2DTI')
 elseif strcmp(valName,'Volume') || strcmp(valName,'Volume')
     ylims = [0 20000];
     yticks=[0 10000 20000];
-    YLab = 'Volume (mm3)';
+    YLab = 'Tract Volume (mm^3)';
     xtl = .03;
     mat = 'min';    
  elseif strcmp(valName,'LI') || strcmp(valName,'Volume')

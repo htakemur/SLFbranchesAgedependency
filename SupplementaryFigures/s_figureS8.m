@@ -42,8 +42,8 @@ for i=1:4
     hold on
 end
 line(x,y,'Color','k');
-xlabel('Left SLF I tract volume (mm^2)');
-ylabel('Right SLF I tract volume (mm^2)');
+xlabel('Left SLF I tract volume (mm^3)');
+ylabel('Right SLF I tract volume (mm^3)');
 axis square
 set(gca, 'tickdir', 'out', 'box', 'off', 'xlim', h1.xlim,'xtick',xtick, 'ylim', h1.ylim,'ytick',ytick);
 
@@ -67,8 +67,8 @@ for i=1:4
     hold on
 end
 line(x,y,'Color','k');
-xlabel('Left SLF II tract volume (mm^2)');
-ylabel('Right SLF II tract volume (mm^2)');
+xlabel('Left SLF II tract volume (mm^3)');
+ylabel('Right SLF II tract volume (mm^3)');
 axis square
 set(gca, 'tickdir', 'out', 'box', 'off', 'xlim', h1.xlim,'xtick',xtick, 'ylim', h1.ylim,'ytick',ytick);
 
@@ -92,7 +92,7 @@ for i=1:4
     hold on
 end
 line(x,y,'Color','k');
-xlabel('Left SLF III tract volume (mm^2)');
-ylabel('Right SLF III tract volume (mm^2)');
+xlabel('Left SLF III tract volume (mm^3)');
+ylabel('Right SLF III tract volume (mm^3)');
 axis square
 set(gca, 'tickdir', 'out', 'box', 'off', 'xlim', h1.xlim,'xtick',xtick, 'ylim', h1.ylim,'ytick',ytick);
