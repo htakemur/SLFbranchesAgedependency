@@ -71,14 +71,14 @@ ordernum = [1 4 2 5 3 6];
 for ng = 1:6
     subplot (3,2,ng)
     h = bar(transpose(squeeze(tractvolume_mean(ordernum(ng),:,:))));
-    hold on
     h(1).FaceColor = [0.2078 0.1647 0.5255];
     h(2).FaceColor = [0.9725 0.9804 0.0510];
+    hold on
     er = errorbar(transpose(squeeze(tractvolume_mean(ordernum(ng),:,:))), transpose(squeeze(tractvolume_ser(ordernum(ng),:,:))));
-    er(1).Color = [0 0 0];
+    er(1).Color = [1 0 0];
     er(1).LineStyle = 'none';
     er(1).XData = [0.86 1.86 2.86 3.86];
-    er(2).Color = [0 0 0];
+    er(2).Color = [1 0 0];
     er(2).LineStyle = 'none';
     er(2).XData = [1.14 2.14 3.14 4.14];
     ylim([0 20000]);

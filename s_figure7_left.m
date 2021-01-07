@@ -57,4 +57,4 @@ for ng = 1:4
     title (groupnames(ng))
     pbaspect([3 4 1])
 end
-    set(gcf, 'Position', [1 1 screensize(3)*0.2 screensize(4)*0.8])
+set(gcf, 'Position', [1 1 screensize(3)*0.2 screensize(4)*0.8])

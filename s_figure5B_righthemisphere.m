@@ -71,6 +71,3 @@ age(61:82) = [60 75 67 62 62 55 66 70 70 76 68 68 81 56 79 61 58 55 58 55 61 64]
 
 % Plot age dependency curve
 f=nc_PlotModelFits(coef,'Res_FA',{'Right SLF I'},1,[.16 .68 .9]);
-
-
-

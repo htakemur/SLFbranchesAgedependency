@@ -74,6 +74,3 @@ groupnames = {'Left SLF I'};
 
 % Plot age dependency curve
 f=nc_PlotModelFits(coef,'Res_FA',{'Left SLF I'},1,[.16 .68 .9]);
-
-
-
