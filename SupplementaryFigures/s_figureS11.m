@@ -1,5 +1,4 @@
 function s_figureS11
-
 % Create scatter plots comparing fractional anisotropy (FA) along SLF I/II/III between left and right hemispheres.
 % This script aims to reproduce Supplementary Figure 11 in a following article:
 %
@@ -19,7 +18,6 @@ color{1} = [0, 0.4470, 0.7410];
 color{2} = [0.8500, 0.3250, 0.0980];
 color{3} = [0.9290, 0.6940, 0.1250];
 color{4} = [0.4940, 0.1840, 0.5560];
-
 
 for i=1:4
     load(FileToLoad{i});

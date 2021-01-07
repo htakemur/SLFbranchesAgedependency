@@ -1,5 +1,4 @@
 function s_figureS12
-
 % Create scatter plots comparing quantitative R1 (qR1) along SLF I/II/III between left and right hemispheres.
 % This script aims to reproduce Supplementary Figure 12 in a following article:
 %
