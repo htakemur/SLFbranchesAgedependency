@@ -11,6 +11,7 @@ function s_figure4
 
 cd Data/FAqR1_Main/
 
+% Add path to Yeatman Lifespan code
 addpath(genpath('../Codes_YeatmanLifespanrepository'));
 
 FileToLoad{1}='CH_FAqR1_main.mat';

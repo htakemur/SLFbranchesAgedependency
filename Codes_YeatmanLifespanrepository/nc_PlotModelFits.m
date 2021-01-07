@@ -30,24 +30,6 @@ figure;
 
 %% Plotting options
 
-if notDefined('valName')
-    valName = 'T1_map_lsq_2DTI';
-end
-
-% Which fiber tracts to plot
-if notDefined('fgnums')
-    fgnums = 1:20;
-end
-% Colors
-if notDefined('color')
-    color = wmdevo_colormap(length(fgnums));
-end
-% Get the fiber group names
-if notDefined('fgNames')
-    fgNames = {'Left Thalamic Radiation','Right Thalamic Radiation','Left Corticospinal','Right Corticospinal', 'Left Cingulum Cingulate', 'Right Cingulum Cingulate'...
-        'Left Cingulum Hippocampus','Right Cingulum Hippocampus', 'Callosum Forceps Major', 'Callosum Forceps Minor'...
-        'Left IFOF','Right IFOF','Left ILF','Right ILF','Left SLF','Right SLF','Left Uncinate','Right Uncinate','Left Arcuate','Right Arcuate'};
-end
 fgNames = fgNames(fgnums);
 % Points to evaluate model
 x0 = min(coefs(1).x):max(coefs(1).x);

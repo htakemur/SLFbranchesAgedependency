@@ -1,9 +1,9 @@
-function [sqErr, yhat, coef] = nc_FitAndEvaluateModels(y, x, model,crossvalidate,bootIter, params)
+function [sqErr, yhat, coef] = nc_FitAndEvaluateModels(y, x, model,crossvalidate,bootIter)
 % Calculate R2 using leave one out cross validation for a variety of models
 %
-% [R2, sqErr, yhat, coef] = nc_FitAndEvaluateModels(y, x, model,crossvalidate,bootIter, params)
+% [R2, sqErr, yhat, coef] = nc_FitAndEvaluateModels(y, x, model,crossvalidate,bootIter)
 %
-% This function will fit and evaluate a number of different types of models 
+% This function will fit and evaluate a number of different types of models
 % using cross validation
 %
 % The following model classes have been implimented:
@@ -12,7 +12,7 @@ function [sqErr, yhat, coef] = nc_FitAndEvaluateModels(y, x, model,crossvalidate
 % 'piecewise'       - Piecewise linear model consisting of a line with a
 %                     slope joined to a flat line by a hinge
 % 'piecewise2'      - Piecewise linear model consisting of 2 lines with
-%                     independent slopes each connected by a flat line in 
+%                     independent slopes each connected by a flat line in
 %                     the middle with 2 independent hinges
 % 'piecewisenoflat' - Same as piecewise but the second line has an
 %                     independent slope (rather than being flat)
@@ -39,19 +39,11 @@ function [sqErr, yhat, coef] = nc_FitAndEvaluateModels(y, x, model,crossvalidate
 % coef  - model coefficients
 %
 % Copyright Jason D. Yeatman, August 2014. Code released with:
-% Yeatman JD, Wandell BA & Mezer AM (2014). Lifespan maturation 
+% Yeatman JD, Wandell BA & Mezer AM (2014). Lifespan maturation
 % and degeneration of human brain white matter. Nature Communications.
 % Github repository hosting the original version of the code: https://github.com/jyeatman/lifespan
 
 %% Argument checking
-if notDefined('crossvalidate')
-    crossvalidate = true;
-end
-if notDefined('bootIter')
-    bootstrap = false;
-else
-    bootstrap = true;
-end
 
 % If a lowess model was requested then parse the bandwidth parameter
 if ~isempty(strfind(model,'lowess'))
@@ -86,9 +78,7 @@ switch(model)
         coef.full = regress(y, X);
         
         % Bootstrap
-        if bootstrap == 1
-            coef.boot = bootstrp(bootIter, @regress, y, X);
-        end
+        coef.boot = bootstrp(bootIter, @regress, y, X);
         
         % Cross validate
         if crossvalidate == 1
@@ -108,10 +98,9 @@ switch(model)
         coef.full = regress(y, X);
         
         % Bootstrap
-        if bootstrap == 1
             coef.boot = bootstrp(bootIter, @regress, y, X);
-        end
-        
+
+           
         % Cross validate
         if crossvalidate == 1
             for ii = 1:size(ind,2)
@@ -132,9 +121,7 @@ switch(model)
         coef.full = piecewiseFit(x, y, c);
         
         % Bootstrap
-        if bootstrap == 1
             coef.boot = bootstrp(bootIter,@(x,y) piecewiseFit(x,y,c),x,y);
-        end
         
         if crossvalidate == 1
             for ii = 1:size(ind,2)
@@ -153,9 +140,7 @@ switch(model)
         coef.full = piecewiseFit(x, y, c);
         
         % Bootstrap
-        if bootstrap == 1
             coef.boot = bootstrp(bootIter,@(x,y) piecewiseFit(x,y,c),x,y);
-        end
         
         if crossvalidate == 1
             for ii = 1:size(ind,2)
@@ -176,9 +161,7 @@ switch(model)
         coef.full = piecewiseFit(x, y, c,'fit');
         
         % Bootstrap
-        if bootstrap == 1
             coef.boot = bootstrp(bootIter,@(x,y) piecewiseFit(x,y,c,'fit'),x,y);
-        end
         
         if crossvalidate == 1
             for ii = 1:size(ind,2)
@@ -197,9 +180,7 @@ switch(model)
         coef.full = piecewiseFit(x, y, c,'fit');
         
         % Bootstrap
-        if bootstrap == 1
             coef.boot = bootstrp(bootIter,@(x,y) piecewiseFit(x,y,c,'fit'),x,y);
-        end
         
         if crossvalidate == 1
             for ii = 1:size(ind,2)
@@ -224,9 +205,7 @@ switch(model)
         coef.full = lsqcurvefit(expfun, [L(1) 1 L(2)], x, y, [], [], options);
         
         % Bootstrap
-        if bootstrap == 1
             coef.boot = bootstrp(bootIter,@(x,y) lsqcurvefit(expfun, [L(1) 1 L(2)], x, y, [], [], options), x, y);
-        end
         
         % Cross validate
         if crossvalidate == 1
@@ -252,11 +231,7 @@ switch(model)
             y = y';
         end
         % kernal width
-        if notDefined('params')
-            k = 15;
-        else
-            k = params;
-        end
+        k = 15;
         
         % For the coeficients we save first the point at which the model is
         % evaluated and second the predicted value at that point.
@@ -264,9 +239,7 @@ switch(model)
         coef.full(:,2) = localregression(x, y, coef.full(:,1) ,3,[], k);
         
         % Bootstrap
-        if bootstrap == 1
             coef.boot = bootstrp(bootIter,@(x,y) localregression(x, y, coef.full(:,1) ,3,[], k), x, y);
-        end
         
         % Crossvalidate
         if crossvalidate == 1
@@ -291,17 +264,13 @@ switch(model)
                 yhat(ii) = arespredict(model, x(leftout(ii)));
             end
         end
-        if bootstrap == 1
             coef.boot = bootstrp(bootIter,@(x,y) aresbuild(x,y),x,y)
-        end
     case{'poisson'}
         coef.name = model;
         coef.full = fitPoissonCurve(x,y);
         
         % Bootstrap
-        if bootstrap == 1
             coef.boot = bootstrp(bootIter, @fitPoissonCurve, x, y);
-        end
         
         % Cross validate
         if crossvalidate == 1
