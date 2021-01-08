@@ -12,7 +12,7 @@ cd ../Data/TractVolume_Main/
 
 FileToLoad{1}='SEN_tractvolume_main.mat';
 
-% Calculate summary statistics in eaxchc subgroup
+% Calculate summary statistics in each subgroup
 group_1 = [1 4:6 14 16:21];
 group_2 = [2:3 7:13 15 22];
 
