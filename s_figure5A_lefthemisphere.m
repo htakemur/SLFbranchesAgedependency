@@ -72,11 +72,12 @@ ytick = [-0.05 0 0.05];%degree
 
 % Plot results
 h = bar(l_slf1_residual_group_mean);
+h(1).FaceColor = [0.2078 0.1647 0.5255];
 hold on
 er = errorbar(l_slf1_residual_group_mean,l_slf1_residual_group_ser);
 er.Color = 'red';
 er.LineStyle = 'none';
-ylim([-0.05 0.05])
+ylim([-0.05 0.05]);
 ylabel('Residual FA');
 set(gca, 'tickdir', 'out', 'box', 'off', 'ytick',ytick);
 set(gca, 'XTickLabel', {'CH','ADO','ADU','SEN'}, 'fontsize', 12);

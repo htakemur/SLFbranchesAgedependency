@@ -72,6 +72,7 @@ ytick = [-0.05 0 0.05];
 
 % Plot results
 h = bar(l_slf1_residual_group_mean);
+h(1).FaceColor = [0.2078 0.1647 0.5255];
 hold on
 er = errorbar(l_slf1_residual_group_mean,l_slf1_residual_group_ser);
 er.Color = 'red';

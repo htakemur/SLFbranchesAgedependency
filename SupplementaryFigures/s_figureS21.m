@@ -1,20 +1,19 @@
-function s_figure6
+function s_figureS21
 
-% Plot mean and standard deviation of quantitative R1 (qR1) of SLF I, II, and III in each age group.
-% This script aims to reproduce Figure 6 in a following article:
+% Plot mean and standard deviation of quantitative R1 (qR1) of SLF I, II, and III in each age group, estimated by using exclusive ROIs.
+% This script aims to reproduce Supplementary Figure 21 in a following article:
 %
 % Amemiya, K., Naito, E. & Takemura, H. (2021)
 %  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd Data/FAqR1_Main/
+cd ../Data/FAqR1_ExclusiveROI/
 
-% Path to the data file
-FileToLoad{1}='CH_FAqR1_main.mat';
-FileToLoad{2}='ADO_FAqR1_main.mat';
-FileToLoad{3}='ADU_FAqR1_main.mat';
-FileToLoad{4}='SEN_FAqR1_main.mat';
+FileToLoad{1}='CH_FAqR1_exclusiveROI.mat';
+FileToLoad{2}='ADO_FAqR1_exclusiveROI.mat';
+FileToLoad{3}='ADU_FAqR1_exclusiveROI.mat';
+FileToLoad{4}='SEN_FAqR1_exclusiveROI.mat';
 
 % Load data and comppute mean/standard error
 for i = 1:4
@@ -44,7 +43,7 @@ for ng = 1:6
     ylim([1.0 1.2])
     ylabel('qR1');
     yticks([1.0 1.1 1.2]);
-    set(gca, 'tickdir', 'out', 'box', 'off');
+    set(gca, 'tickdir', 'out', 'box', 'off');    
     set(gca, 'XTickLabel', {'CH','ADO','ADU','SEN'}, 'fontsize', 12);
-    title(groupnames(ordernum(ng)))
+    title(groupnames(ordernum(ng)));
 end
