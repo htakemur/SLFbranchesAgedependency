@@ -66,9 +66,6 @@ age(18:37) = [18 12 13 12 12 11 14 11 11 14 10 14 11 16 15 10 13 18 17 17];
 age(38:60) = [31 29 39 24 21 29 31 28 20 21 20 32 21 24 32 24 43 44 50 47 47 40 50];
 age(61:82) = [60 75 67 62 62 55 66 70 70 76 68 68 81 56 79 61 58 55 58 55 61 64];
 
-groupnames = {'Left SLF I'};
-
-
 % Fit Poisson curve
 [sqErr,yhat,coef]=nc_FitAndEvaluateModels(transpose(l_slf1_residual),transpose(age),'poisson',1,1000);
 
