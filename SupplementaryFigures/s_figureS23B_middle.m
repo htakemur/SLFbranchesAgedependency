@@ -40,7 +40,7 @@ er(1).XData = [0.87 1.87 2.87 3.87 4.87 5.87];
 er(2).Color = [1 0 0];
 er(2).LineStyle = 'none';
 er(2).XData = [1.13 2.13 3.13 4.13 5.13 6.13];
-ylim([0.3 0.55])
+ylim([0.3 0.55]);
 ylabel('FA');
 ytick = [0.3 0.35 0.4 0.45 0.5 0.55];
 set(gca, 'tickdir', 'out', 'box', 'off', 'ytick',ytick);

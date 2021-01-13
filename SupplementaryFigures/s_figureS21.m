@@ -33,14 +33,14 @@ ordernum = [1 4 2 5 3 6];
 
 % Create bar plot
 for ng = 1:6
-    subplot (3,2,ng)
+    subplot (3,2,ng);
     h = bar(transpose(qr1_mean(ordernum(ng),:)));
     h(1).FaceColor = [0.2078 0.1647 0.5255];
     hold on
     er = errorbar(transpose(qr1_mean(ordernum(ng),:)),transpose(qr1_ser(ordernum(ng),:)));
     er.Color = 'red';
     er.LineStyle = 'none';
-    ylim([1.0 1.2])
+    ylim([1.0 1.2]);
     ylabel('qR1');
     yticks([1.0 1.1 1.2]);
     set(gca, 'tickdir', 'out', 'box', 'off');    

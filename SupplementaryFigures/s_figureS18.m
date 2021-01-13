@@ -43,7 +43,7 @@ end
 groupnames = {'Left SLF I/II', 'Left SLF II/III', 'Left SLF I/III', 'Right SLF I/II', 'Right SLF II/III', 'Right SLF I/III'};
 ordernum = [1 4 2 5];
 for ng = 1:4
-    subplot (2,2,ng)
+    subplot (2,2,ng);
     
     tractvolume_mean(1,:) = tractvolume_mean_def(ordernum(ng),:);
     tractvolume_mean(2,:) = tractvolume_mean_ex(ordernum(ng),:);
@@ -70,5 +70,5 @@ for ng = 1:4
         legend('Main analysis','Exclusive ROIs');
     else
     end
-    title(groupnames(ordernum(ng)))
+    title(groupnames(ordernum(ng)));
 end

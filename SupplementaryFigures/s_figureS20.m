@@ -33,16 +33,16 @@ ordernum = [1 4 2 5 3 6];
 
 % Create bar plot
 for ng = 1:6
-    subplot (3,2,ng)
+    subplot (3,2,ng);
     h = bar(transpose(fa_mean(ordernum(ng),:)));
     h(1).FaceColor = [0.2078 0.1647 0.5255];
     hold on
     er = errorbar(transpose(fa_mean(ordernum(ng),:)),transpose(fa_ser(ordernum(ng),:)));
     er.Color = 'red';
     er.LineStyle = 'none';
-    ylim([0.35 0.55])
+    ylim([0.35 0.55]);
     ylabel('FA');
     set(gca, 'tickdir', 'out', 'box', 'off');
     set(gca, 'XTickLabel', {'CH','ADO','ADU','SEN'}, 'fontsize', 12);
-    title(groupnames(ordernum(ng)))
+    title(groupnames(ordernum(ng)));
 end

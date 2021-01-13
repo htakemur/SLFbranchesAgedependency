@@ -31,16 +31,16 @@ groupnames = {'SLF I', 'SLF II', 'SLF III'};
 
 % Plot spatial profile
 for ng = 1:3
-    subplot (3,1,ng)
+    subplot (3,1,ng);
     x = [1:1:60];
     h = plot(x, LI_plot(:,1,ng), x, LI_plot(:,2,ng), x, LI_plot(:,3,ng),x, LI_plot(:,4,ng));
     hold on
-    ylim([-0.05,0.05])
+    ylim([-0.05,0.05]);
     ylabel('LI');
     xlabel('Position');
     if ng ==1
         legend('CH','ADO','ADU','SEN');
     else
     end
-    title(groupnames(ng))
+    title(groupnames(ng));
 end

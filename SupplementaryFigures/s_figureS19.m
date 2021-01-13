@@ -29,7 +29,7 @@ ordernum = [1 4 2 5 3 6];
 
 % Plot results
 for ng = 1:6
-    subplot (3,2,ng)
+    subplot (3,2,ng);
     h = bar(transpose(tractvolume_mean(ordernum(ng),:)));
     h(1).FaceColor = [0.2078 0.1647 0.5255];
     hold on
@@ -41,5 +41,5 @@ for ng = 1:6
     ylabel('Tract volume (mm^3)');
     set(gca, 'tickdir', 'out', 'box', 'off');
     set(gca, 'XTickLabel', {'CH','ADO','ADU','SEN'}, 'fontsize', 12);
-    title(groupnames(ordernum(ng)))
+    title(groupnames(ordernum(ng)));
 end

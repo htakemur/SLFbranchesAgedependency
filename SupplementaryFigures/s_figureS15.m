@@ -86,7 +86,7 @@ groupnames = {'Left SLF I', 'Left SLF II', 'Left SLF III', 'Right SLF I', 'Right
 ordernum = [1 4 2 5 3 6];
 
 for ng = 1:6
-    subplot (3,2,ng)
+    subplot (3,2,ng);
     h = bar(transpose(squeeze(fa_mean(ordernum(ng),:,:))));
     h(1).FaceColor = [0.2078 0.1647 0.5255];
     h(2).FaceColor = [0.9725 0.9804 0.0510];
@@ -98,7 +98,7 @@ for ng = 1:6
     er(2).Color = [1 0 0];
     er(2).LineStyle = 'none';
     er(2).XData = [1.14 2.14 3.14 4.14];
-    ylim([0.35 0.55])
+    ylim([0.35 0.55]);
     ylabel('FA');
     yticks([0.35 0.45 0.55]);
     set(gca, 'tickdir', 'out', 'box', 'off');
@@ -107,5 +107,5 @@ for ng = 1:6
         legend('Male','Female');
     else
     end
-    title(groupnames(ordernum(ng)))
+    title(groupnames(ordernum(ng)));
 end

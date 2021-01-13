@@ -38,17 +38,17 @@ age(61:82) = [60 75 67 62 62 55 66 70 70 76 68 68 81 56 79 61 58 55 58 55 61 64]
 for k=1:6
     [sqErr{k},yhat{k},coef{k}]=nc_FitAndEvaluateModels(transpose(tractvolume_all(k,:)),transpose(age),'poisson',1,1000);
     switch k
-        case 1,
+        case 1
             f=nc_PlotModelFits(coef{k},'Volume',{'Left SLF I'},1,[.16 .68 .9]);
-        case 2,
+        case 2
             f=nc_PlotModelFits(coef{k},'Volume',{'Left SLF II'},1,[.07 .07 .71]);
-        case 3,
+        case 3
             f=nc_PlotModelFits(coef{k},'Volume',{'Left SLF III'},1,[.76 0 .76]);
-        case 4,
+        case 4
             f=nc_PlotModelFits(coef{k},'Volume',{'Right SLF I'},1,[.16 .68 .9]);
-        case 5,
+        case 5
             f=nc_PlotModelFits(coef{k},'Volume',{'Right SLF II'},1,[.07 .07 .71]);
-        case 6,
+        case 6
             f=nc_PlotModelFits(coef{k},'Volume',{'Right SLF III'},1,[.76 0 .76]);
     end
 end

@@ -55,5 +55,5 @@ for ng = 1:6
     ylim([0 20000]);
     ylabel('Tract Volume (mm^3)');
     set(gca, 'XTickLabel', {'CH','ADO','ADU','SEN'}, 'fontsize', 12);
-    title(groupnames(ordernum(ng)))
+    title(groupnames(ordernum(ng)));
 end

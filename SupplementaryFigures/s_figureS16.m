@@ -85,7 +85,7 @@ groupnames = {'Left SLF I', 'Left SLF II', 'Left SLF III', 'Right SLF I', 'Right
 ordernum = [1 4 2 5 3 6];
 
 for ng = 1:6
-    subplot (3,2,ng)
+    subplot(3,2,ng);
     h = bar(transpose(squeeze(qr1_mean(ordernum(ng),:,:))));
     h(1).FaceColor = [0.2078 0.1647 0.5255];
     h(2).FaceColor = [0.9725 0.9804 0.0510];
@@ -105,5 +105,5 @@ for ng = 1:6
         legend('Male','Female');
     else
     end
-    title(groupnames(ordernum(ng)))
+    title(groupnames(ordernum(ng)));
 end

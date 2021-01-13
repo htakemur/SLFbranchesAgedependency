@@ -19,23 +19,21 @@ for kk = 1:4
     for i = 1:4
         load(FileToLoad{i});
         
- 
-     % Compute lateralization index
-    SLFI_LI = squeeze((tractvolume(4,:,kk) - tractvolume(1,:,kk))./(tractvolume(1,:,kk) + tractvolume(4,:,kk)))';
-    SLFII_LI = squeeze((tractvolume(5,:,kk) - tractvolume(2,:,kk))./(tractvolume(2,:,kk) + tractvolume(5,:,kk)))';
-    SLFIII_LI = squeeze((tractvolume(6,:,kk) - tractvolume(3,:,kk))./(tractvolume(3,:,kk) + tractvolume(6,:,kk)))';
-
-            % Compute summary statistics of LI
-    SLF_LI_mean(1,i,kk) = mean(SLFI_LI);
-    SLF_LI_mean(2,i,kk) = mean(SLFII_LI);
-    SLF_LI_mean(3,i,kk) = mean(SLFIII_LI);
-    SLF_LI_std(1,i,kk) = std(SLFI_LI);
-    SLF_LI_std(2,i,kk) = std(SLFII_LI);
-    SLF_LI_std(3,i,kk) = std(SLFIII_LI);
-    SLF_LI_ser(1,i,kk) = SLF_LI_std(1,i,kk)./sqrt(length(SLFI_LI));
-    SLF_LI_ser(2,i,kk) = SLF_LI_std(2,i,kk)./sqrt(length(SLFII_LI));
-    SLF_LI_ser(3,i,kk) = SLF_LI_std(3,i,kk)./sqrt(length(SLFIII_LI));
+        % Compute lateralization index
+        SLFI_LI = squeeze((tractvolume(4,:,kk) - tractvolume(1,:,kk))./(tractvolume(1,:,kk) + tractvolume(4,:,kk)))';
+        SLFII_LI = squeeze((tractvolume(5,:,kk) - tractvolume(2,:,kk))./(tractvolume(2,:,kk) + tractvolume(5,:,kk)))';
+        SLFIII_LI = squeeze((tractvolume(6,:,kk) - tractvolume(3,:,kk))./(tractvolume(3,:,kk) + tractvolume(6,:,kk)))';
         
+        % Compute summary statistics of LI
+        SLF_LI_mean(1,i,kk) = mean(SLFI_LI);
+        SLF_LI_mean(2,i,kk) = mean(SLFII_LI);
+        SLF_LI_mean(3,i,kk) = mean(SLFIII_LI);
+        SLF_LI_std(1,i,kk) = std(SLFI_LI);
+        SLF_LI_std(2,i,kk) = std(SLFII_LI);
+        SLF_LI_std(3,i,kk) = std(SLFIII_LI);
+        SLF_LI_ser(1,i,kk) = SLF_LI_std(1,i,kk)./sqrt(length(SLFI_LI));
+        SLF_LI_ser(2,i,kk) = SLF_LI_std(2,i,kk)./sqrt(length(SLFII_LI));
+        SLF_LI_ser(3,i,kk) = SLF_LI_std(3,i,kk)./sqrt(length(SLFIII_LI));
     end
 end
 
@@ -68,13 +66,11 @@ for ng = 1:4
     er(4).Color = [0 0 0];
     er(4).LineStyle = 'none';
     er(4).XData = [1.27 2.27 3.27];
-    ylim([-0.5,0.5])
-    view(90,90)
+    ylim([-0.5,0.5]);
+    view(90,90);
     set(gca,'tickdir','out','box','off');
     set(gca, 'XTickLabel', {'SLF I','SLF II', 'SLF III'}, 'fontsize', 12);
-    title (groupnames(ng))
+    title (groupnames(ng));
     pbaspect([3 4 1]);
 end
-set(gcf, 'Position', [1 1 screensize(3)*0.2 screensize(4)*0.8])
-
-
+set(gcf, 'Position', [1 1 screensize(3)*0.2 screensize(4)*0.8]);

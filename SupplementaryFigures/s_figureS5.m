@@ -26,15 +26,15 @@ groupnames = {'Left SLF I', 'Left SLF II', 'Left SLF III', 'Right SLF I', 'Right
 ordernum = [1 4 2 5 3 6];
 
 for ng = 1:6
-    subplot (3,2,ng)
+    subplot (3,2,ng);
     x = [1:1:60];
     h = plot(x, fa_plot(:,1,ordernum(ng)), x, fa_plot(:,2,ordernum(ng)), x, fa_plot(:,3,ordernum(ng)), x, fa_plot(:,4,ordernum(ng)));
     hold on
-    ylim([0.3 0.55])
+    ylim([0.3 0.55]);
     ylabel('FA');
-    if ng ==1,
+    if ng ==1
         legend('CH','ADO','ADU','SEN');
     else
     end
-    title(groupnames(ordernum(ng)))
+    title(groupnames(ordernum(ng)));
 end

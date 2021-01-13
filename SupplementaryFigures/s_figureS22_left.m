@@ -41,7 +41,7 @@ screensize = get(0, 'ScreenSize');
 
 groupnames = {'CH','ADO','ADU','SEN'};
 for ng = 1:4
-    subplot (4,1,ng)
+    subplot (4,1,ng);
     b = bar(SLF_LI_mean(:,ng));
     b.FaceColor = 'flat';
     b.CData(1,:) = [.16 .68 .9];
@@ -51,11 +51,11 @@ for ng = 1:4
     er = errorbar(1:3,SLF_LI_mean(:,ng),SLF_LI_ser(:,ng));
     er.Color = [0 0 0];
     er.LineStyle = 'none';
-    ylim([-0.5,0.5])
-    view(90,90)
+    ylim([-0.5,0.5]);
+    view(90,90);
     set(gca,'tickdir','out','box','off');
     set(gca, 'XTickLabel', {'SLF I','SLF II', 'SLF III'}, 'fontsize', 12);
-    title (groupnames(ng))
-    pbaspect([3 4 1])
+    title (groupnames(ng));
+    pbaspect([3 4 1]);
 end
-set(gcf, 'Position', [1 1 screensize(3)*0.2 screensize(4)*0.8])
+set(gcf, 'Position', [1 1 screensize(3)*0.2 screensize(4)*0.8]);
