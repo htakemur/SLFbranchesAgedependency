@@ -11,7 +11,10 @@ function s_figure5B_righthemisphere
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd Data/FAqR1_Main/
+cd Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../FAqR1_Main/
 addpath(genpath('../../Codes_YeatmanLifespanrepository'));
 
 % Path to the data file
@@ -25,25 +28,25 @@ load(FileToLoad{1});
 for k = 1:6
     fa_plot(k,1:17) = transpose(squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1))));
 end
-age(1:17) = [9 7 9 8 8 8 6 9 8 9 9 8 9 9 8 9 9];
+age_plot(1:17) = age.CH;
 
 load(FileToLoad{2});
 for k = 1:6
     fa_plot(k,18:37) = transpose(squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1))));
 end
-age(18:37) = [18 12 13 12 12 11 14 11 11 14 10 14 11 16 15 10 13 18 17 17];
+age_plot(18:37) = age.ADO;
 
 load(FileToLoad{3});
 for k = 1:6
     fa_plot(k,38:60) = transpose(squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1))));
 end
-age(38:60) = [31 29 39 24 21 29 31 28 20 21 20 32 21 24 32 24 43 44 50 47 47 40 50];
+age_plot(38:60) = age.ADU;
 
 load(FileToLoad{4});
 for k = 1:6
     fa_plot(k,61:82) = transpose(squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1))));
 end
-age(61:82) = [60 75 67 62 62 55 66 70 70 76 68 68 81 56 79 61 58 55 58 55 61 64];
+age_plot(61:82) = age.SEN;
 
 % Fit the multiple linear regression to right SLF I by right SLF II and SLF III as explainatory variables
 x(:,1) = transpose(fa_plot(5,:)); % Right SLF II
@@ -51,6 +54,9 @@ x(:,2) = transpose(fa_plot(6,:)); % Right SLF III
 
 % Fit the multiple linear regression
 mdl = fitlm(x,transpose(fa_plot(4,:)));
+
+% Rsquared of the model
+mdl_r2 = mdl.Rsquared.Ordinary
 
 % Calculate FA of SLF I predicted by the model
 for ik = 1:length(fa_plot)
@@ -60,14 +66,8 @@ end
 % Measure residuals for right SLF 1
 r_slf1_residual = fa_plot(4,:) - predict_r_slf1;
 
-% Age of participants
-age(1:17) = [9 7 9 8 8 8 6 9 8 9 9 8 9 9 8 9 9];
-age(18:37) = [18 12 13 12 12 11 14 11 11 14 10 14 11 16 15 10 13 18 17 17];
-age(38:60) = [31 29 39 24 21 29 31 28 20 21 20 32 21 24 32 24 43 44 50 47 47 40 50];
-age(61:82) = [60 75 67 62 62 55 66 70 70 76 68 68 81 56 79 61 58 55 58 55 61 64];
-
 % Fit Poisson curve
-[sqErr,yhat,coef]=nc_FitAndEvaluateModels(transpose(r_slf1_residual),transpose(age),'poisson',1,1000);
+[sqErr,yhat,coef]=nc_FitAndEvaluateModels(transpose(r_slf1_residual),transpose(age_plot),'poisson',1,1000);
 
 % Plot age dependency curve
 f=nc_PlotModelFits(coef,'Res_FA',{'Right SLF I'},1,[.16 .68 .9]);
