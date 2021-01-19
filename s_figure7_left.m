@@ -7,6 +7,8 @@ function s_figure7_left
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
+addpath(genpath(pwd));
+
 cd Data/TractVolume_Main/
 
 FileToLoad{1}='CH_tractvolume_main.mat';
@@ -22,7 +24,7 @@ for i = 1:4
     SLFI_LI = squeeze((tractvolume(4,:) - tractvolume(1,:))./(tractvolume(1,:) + tractvolume(4,:)))';
     SLFII_LI = squeeze((tractvolume(5,:) - tractvolume(2,:))./(tractvolume(2,:) + tractvolume(5,:)))';
     SLFIII_LI = squeeze((tractvolume(6,:) - tractvolume(3,:))./(tractvolume(3,:) + tractvolume(6,:)))';
-    
+   
     % Compute summary statistics of LI
     SLF_LI_mean(1,i) = mean(SLFI_LI);
     SLF_LI_mean(2,i) = mean(SLFII_LI);
@@ -33,6 +35,14 @@ for i = 1:4
     SLF_LI_ser(1,i) = SLF_LI_std(1,i)./sqrt(length(SLFI_LI));
     SLF_LI_ser(2,i) = SLF_LI_std(2,i)./sqrt(length(SLFII_LI));
     SLF_LI_ser(3,i) = SLF_LI_std(3,i)./sqrt(length(SLFIII_LI));
+    
+    % Calculate effect size and perform paired t-test
+    [d(i,1)] = s_computedprime(tractvolume(4,:), tractvolume(1,:));
+    [d(i,2)] = s_computedprime(tractvolume(5,:), tractvolume(2,:));
+    [d(i,3)] = s_computedprime(tractvolume(6,:), tractvolume(3,:));
+    [~,p(i,1)] = ttest(tractvolume(4,:), tractvolume(1,:));
+    [~,p(i,2)] = ttest(tractvolume(5,:), tractvolume(2,:));
+    [~,p(i,3)] = ttest(tractvolume(6,:), tractvolume(3,:));
 end
 
 % Get Screen Size
