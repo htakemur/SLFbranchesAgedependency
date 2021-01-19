@@ -8,6 +8,8 @@ function s_figureS13_right
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
+addpath(genpath('..'));
+
 cd ../Data/FAqR1_Main/
 
 FileToLoad{1}='CH_FAqR1_main.mat';
@@ -50,6 +52,15 @@ for i = 1:4
     SLF_LI_ser(1,i) = SLF_LI_std(1,i)./sqrt(length(SLFI_LI));
     SLF_LI_ser(2,i) = SLF_LI_std(2,i)./sqrt(length(SLFII_LI));
     SLF_LI_ser(3,i) = SLF_LI_std(3,i)./sqrt(length(SLFIII_LI));
+    
+    % Calculate effect size and perform paired t-test
+    [d(i,1)] = s_computedprime(qr1_plot(:,4), qr1_plot(:,1));
+    [d(i,2)] = s_computedprime(qr1_plot(:,5), qr1_plot(:,2));
+    [d(i,3)] = s_computedprime(qr1_plot(:,6), qr1_plot(:,3));
+    [~,p(i,1)] = ttest(qr1_plot(:,4), qr1_plot(:,1));
+    [~,p(i,2)] = ttest(qr1_plot(:,5), qr1_plot(:,2));
+    [~,p(i,3)] = ttest(qr1_plot(:,6), qr1_plot(:,3));
+    
     clear qr1_plot
 end
 

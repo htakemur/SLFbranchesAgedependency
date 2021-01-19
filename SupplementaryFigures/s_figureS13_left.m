@@ -1,12 +1,14 @@
 function s_figureS13_left
 
-% Plot mean and standard deviation of the lateralization index of SLF I, II, and III volume in each age group, by only including right-handed participants. 
+% Plot mean and standard deviation of the lateralization index of SLF I, II, and III volume in each age group, by only including right-handed participants.
 % This script aims to reproduce the left panel of Supplementary Figure 13 in a following article:
 %
 % Amemiya, K., Naito, E. & Takemura, H. (2021)
 %  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
 %
 % Hiromasa Takemura, NICT CiNet BIT
+
+addpath(genpath('..'));
 
 cd ../Data/TractVolume_Main/
 
@@ -46,6 +48,14 @@ for i = 1:4
     SLF_LI_ser(1,i) = SLF_LI_std(1,i)./sqrt(length(SLFI_LI));
     SLF_LI_ser(2,i) = SLF_LI_std(2,i)./sqrt(length(SLFII_LI));
     SLF_LI_ser(3,i) = SLF_LI_std(3,i)./sqrt(length(SLFIII_LI));
+    
+    % Calculate effect size and perform paired t-test
+    [d(i,1)] = s_computedprime(tractvolume(4,RH_subj), tractvolume(1,RH_subj));
+    [d(i,2)] = s_computedprime(tractvolume(5,RH_subj), tractvolume(2,RH_subj));
+    [d(i,3)] = s_computedprime(tractvolume(6,RH_subj), tractvolume(3,RH_subj));
+    [~,p(i,1)] = ttest(tractvolume(4,RH_subj), tractvolume(1,RH_subj));
+    [~,p(i,2)] = ttest(tractvolume(5,RH_subj), tractvolume(2,RH_subj));
+    [~,p(i,3)] = ttest(tractvolume(6,RH_subj), tractvolume(3,RH_subj));
 end
 
 % Get Screen Size

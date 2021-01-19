@@ -1,12 +1,14 @@
 function s_figureS13_middle
 
-% Plot mean and standard deviation of the lateralization index of SLF I, II, and III FA in each age group, by only including right-handed participants. 
+% Plot mean and standard deviation of the lateralization index of SLF I, II, and III FA in each age group, by only including right-handed participants.
 % This script aims to reproduce the middle panel of Supplementary Figure 13 in a following article:
 %
 % Amemiya, K., Naito, E. & Takemura, H. (2021)
 %  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
 %
 % Hiromasa Takemura, NICT CiNet BIT
+
+addpath(genpath('..'));
 
 cd ../Data/FAqR1_Main/
 
@@ -29,7 +31,7 @@ for i = 1:4
             RH_subj = [5:7 9:11 13:17 19:22];
         case 4
             RH_subj = [1:11 13:17 19:21];
-    end    
+    end
     
     % Compute FA averaged from node 21 to node 80
     for k = 1:6
@@ -40,7 +42,7 @@ for i = 1:4
     SLFI_LI = squeeze(((fa_plot(:,4) - fa_plot(:,1))./(fa_plot(:,4) + fa_plot(:,1))));
     SLFII_LI = squeeze(((fa_plot(:,5) - fa_plot(:,2))./(fa_plot(:,5) + fa_plot(:,2))));
     SLFIII_LI = squeeze(((fa_plot(:,6) - fa_plot(:,3))./(fa_plot(:,6) + fa_plot(:,3))));
-
+    
     % Compute summary statistics of LI
     SLF_LI_mean(1,i) = mean(SLFI_LI);
     SLF_LI_mean(2,i) = mean(SLFII_LI);
@@ -51,6 +53,15 @@ for i = 1:4
     SLF_LI_ser(1,i) = SLF_LI_std(1,i)./sqrt(length(SLFI_LI));
     SLF_LI_ser(2,i) = SLF_LI_std(2,i)./sqrt(length(SLFII_LI));
     SLF_LI_ser(3,i) = SLF_LI_std(3,i)./sqrt(length(SLFIII_LI));
+    
+    % Calculate effect size and perform paired t-test
+    [d(i,1)] = s_computedprime(fa_plot(:,4), fa_plot(:,1));
+    [d(i,2)] = s_computedprime(fa_plot(:,5), fa_plot(:,2));
+    [d(i,3)] = s_computedprime(fa_plot(:,6), fa_plot(:,3));
+    [~,p(i,1)] = ttest(fa_plot(:,4), fa_plot(:,1));
+    [~,p(i,2)] = ttest(fa_plot(:,5), fa_plot(:,2));
+    [~,p(i,3)] = ttest(fa_plot(:,6), fa_plot(:,3));
+    
     clear fa_plot
 end
 
