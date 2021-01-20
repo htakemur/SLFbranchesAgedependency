@@ -21,6 +21,14 @@ for i = 1:4
     tractvolume_mean(:,i) = mean(tractvolume,2);
     tractvolume_std(:,i) = std(tractvolume, 0, 2);
     tractvolume_ser(:,i) = tractvolume_std(:,i)./sqrt(length(tractvolume));
+    
+    % Compute d-prima and perform paired t-test
+    [d(i,1)] = s_computedprime(tractvolume(4,:), tractvolume(1,:));
+    [d(i,2)] = s_computedprime(tractvolume(5,:), tractvolume(2,:));
+    [d(i,3)] = s_computedprime(tractvolume(6,:), tractvolume(3,:));
+    [~,p(i,1)] = ttest(tractvolume(4,:), tractvolume(1,:));
+    [~,p(i,2)] = ttest(tractvolume(5,:), tractvolume(2,:));
+    [~,p(i,3)] = ttest(tractvolume(6,:), tractvolume(3,:));
     clear tractvolume
 end
 

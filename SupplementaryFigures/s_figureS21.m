@@ -25,6 +25,14 @@ for i = 1:4
     qr1_mean(:,i) = mean(qr1_plot,1);
     qr1_std(:,i) = std(qr1_plot, 0, 1);
     qr1_ser(:,i) = qr1_std(:,i)./sqrt(length(qr1_plot));
+    
+    % Compute d-prime and perform paired t-test
+    [d(i,1)] = s_computedprime(qr1_plot(:,4), qr1_plot(:,1));
+    [d(i,2)] = s_computedprime(qr1_plot(:,5), qr1_plot(:,2));
+    [d(i,3)] = s_computedprime(qr1_plot(:,6), qr1_plot(:,3));
+    [~,p(i,1)] = ttest(qr1_plot(:,4), qr1_plot(:,1));
+    [~,p(i,2)] = ttest(qr1_plot(:,5), qr1_plot(:,2));
+    [~,p(i,3)] = ttest(qr1_plot(:,6), qr1_plot(:,3));
     clear all_profile qr1_plot
 end
 

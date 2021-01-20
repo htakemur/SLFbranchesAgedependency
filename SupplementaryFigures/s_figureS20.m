@@ -25,6 +25,14 @@ for i = 1:4
     fa_mean(:,i) = mean(fa_plot,1);
     fa_std(:,i) = std(fa_plot, 0, 1);
     fa_ser(:,i) = fa_std(:,i)./sqrt(length(fa_plot));
+    
+    % Compute d-prime and perform paired t-test
+    [d(i,1)] = s_computedprime(fa_plot(:,4), fa_plot(:,1));
+    [d(i,2)] = s_computedprime(fa_plot(:,5), fa_plot(:,2));
+    [d(i,3)] = s_computedprime(fa_plot(:,6), fa_plot(:,3));
+    [~,p(i,1)] = ttest(fa_plot(:,4), fa_plot(:,1));
+    [~,p(i,2)] = ttest(fa_plot(:,5), fa_plot(:,2));
+    [~,p(i,3)] = ttest(fa_plot(:,6), fa_plot(:,3));
     clear all_profile fa_plot
 end
 
