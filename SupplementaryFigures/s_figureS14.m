@@ -7,7 +7,10 @@ function s_figureS14
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/TractVolume_Main/
+cd ../Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../TractVolume_Main/
 
 FileToLoad{1}='CH_tractvolume_main.mat';
 FileToLoad{2}='ADO_tractvolume_main.mat';
@@ -15,8 +18,8 @@ FileToLoad{3}='ADU_tractvolume_main.mat';
 FileToLoad{4}='SEN_tractvolume_main.mat';
 
 load(FileToLoad{1});
-male = [1:3 6:9 14 16:17];
-female = [4:5 10:13 15];
+male = find(sex.CH == 1);
+female = find(sex.CH == 2);
 
 % Compute summary statistics for male and female groups
 tractvolume_mean(:,1,1) = mean(tractvolume(:, male),2);
@@ -26,11 +29,16 @@ tractvolume_mean(:,2,1) = mean(tractvolume(:, female),2);
 tractvolume_std(:,2,1) = std(tractvolume(:, female), 0, 2);
 tractvolume_ser(:,2,1) = tractvolume_std(:,2,1)./sqrt(length(tractvolume(:, female)));
 
-clear male female
+% Perform two-sample t-test
+for i = 1:6
+[~,p(i,1),~,stats{i,1}] = ttest2(transpose(tractvolume(i, male)),transpose(tractvolume(i, female)));
+end
+
+clear male female tractvolume
 
 load(FileToLoad{2});
-male = [1:2 4:5 8 11:12 14 16 20];
-female = [3 6:7 9:10 13 15 17:19];
+male = find(sex.ADO == 1);
+female = find(sex.ADO == 2);
 
 tractvolume_mean(:,1,2) = mean(tractvolume(:, male),2);
 tractvolume_std(:,1,2) = std(tractvolume(:, male), 0, 2);
@@ -39,11 +47,15 @@ tractvolume_mean(:,2,2) = mean(tractvolume(:, female),2);
 tractvolume_std(:,2,2) = std(tractvolume(:, female), 0, 2);
 tractvolume_ser(:,2,2) = tractvolume_std(:,2,2)./sqrt(length(tractvolume(:, female)));
 
-clear male female
+% Perform two-sample t-test
+for i = 1:6
+[~,p(i,2),~,stats{i,2}] = ttest2(transpose(tractvolume(i, male)),transpose(tractvolume(i, female)));
+end
+clear male female tractvolume
 
 load(FileToLoad{3});
-male = [1:3 5 7 14 16 18 21:23];
-female = [4 6 8:13 15 17 19:20];
+male = find(sex.ADU == 1);
+female = find(sex.ADU == 2);
 
 tractvolume_mean(:,1,3) = mean(tractvolume(:, male),2);
 tractvolume_std(:,1,3) = std(tractvolume(:, male), 0, 2);
@@ -52,11 +64,15 @@ tractvolume_mean(:,2,3) = mean(tractvolume(:, female),2);
 tractvolume_std(:,2,3) = std(tractvolume(:, female), 0, 2);
 tractvolume_ser(:,2,3) = tractvolume_std(:,2,3)./sqrt(length(tractvolume(:, female)));
 
-clear male female
+% Perform two-sample t-test
+for i = 1:6
+[~,p(i,3),~,stats{i,3}] = ttest2(transpose(tractvolume(i, male)),transpose(tractvolume(i, female)));
+end
+clear male female tractvolume
 
 load(FileToLoad{4});
-male = [1:2 5 7 9 13 15 17:19];
-female = [3:4 6 8 10:12 14 16 20:22];
+male = find(sex.SEN == 1);
+female = find(sex.SEN == 2);
 
 tractvolume_mean(:,1,4) = mean(tractvolume(:, male),2);
 tractvolume_std(:,1,4) = std(tractvolume(:, male), 0, 2);
@@ -64,6 +80,20 @@ tractvolume_ser(:,1,4) = tractvolume_std(:,1,4)./sqrt(length(tractvolume(:, male
 tractvolume_mean(:,2,4) = mean(tractvolume(:, female),2);
 tractvolume_std(:,2,4) = std(tractvolume(:, female), 0, 2);
 tractvolume_ser(:,2,4) = tractvolume_std(:,2,4)./sqrt(length(tractvolume(:, female)));
+
+% Perform two-sample t-test
+for i = 1:6
+[~,p(i,4),~,stats{i,4}] = ttest2(transpose(tractvolume(i, male)),transpose(tractvolume(i, female)));
+end
+
+% Summarize t-statistics
+for kk = 1:6
+    for jj = 1:4
+      tvalue(kk,jj) = stats{kk,jj}.tstat;     
+    end
+end
+
+clear male female tractvolume
 
 groupnames = {'Left SLF I', 'Left SLF II', 'Left SLF III', 'Right SLF I', 'Right SLF II', 'Right SLF III'};
 ordernum = [1 4 2 5 3 6];
