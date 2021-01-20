@@ -1,6 +1,6 @@
 function s_figureS14
 % Create bar plots comparing tract volume of SLF I/II/III between male and female participants.
-% This script aims to reproduce Supplementary Figure 14 in a following article:
+% This script aims to reproduce Supplementary Figure 14 and Supplementary Table 2 in a following article:
 %
 % Amemiya, K., Naito, E. & Takemura, H. (2021)
 %  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.

@@ -1,6 +1,6 @@
 function s_figureS17
 % Create a scatter plot comparing laterality index (LI) of SLF III volume and SLF III fractional anisotropy (FA).
-% This script aims to reproduce Supplementary Figure 17 in a following article:
+% This script aims to reproduce Supplementary Figure 17 and Supplementary Table 3 in a following article:
 %
 % Amemiya, K., Naito, E. & Takemura, H. (2021)
 %  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
@@ -38,29 +38,50 @@ FileToLoad{4}='SEN_FAqR1_main.mat';
 load(FileToLoad{1});
 for k = 1:6
     fa_plot(:,k) = squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1)));
+    qr1_plot(:,k) = 1./squeeze(squeeze(mean(all_profile.qt1(21:80,k,:),1)));
 end
+FA_SLFII_LI(1:17) = squeeze(((fa_plot(:,5) - fa_plot(:,2))./(fa_plot(:,5) + fa_plot(:,2))));
 FA_SLFIII_LI(1:17) = squeeze(((fa_plot(:,6) - fa_plot(:,3))./(fa_plot(:,6) + fa_plot(:,3))));
-clear fa_plot
+qR1_SLFI_LI(1:17) = squeeze(((qr1_plot(:,4) - qr1_plot(:,1))./(qr1_plot(:,4) + qr1_plot(:,1))));
+clear fa_plot qr1_plot
 
 load(FileToLoad{2});
 for k = 1:6
     fa_plot(:,k) = squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1)));
+    qr1_plot(:,k) = 1./squeeze(squeeze(mean(all_profile.qt1(21:80,k,:),1)));
 end
+FA_SLFII_LI(18:37) = squeeze(((fa_plot(:,5) - fa_plot(:,2))./(fa_plot(:,5) + fa_plot(:,2))));
 FA_SLFIII_LI(18:37) = squeeze(((fa_plot(:,6) - fa_plot(:,3))./(fa_plot(:,6) + fa_plot(:,3))));
-clear fa_plot
+qR1_SLFI_LI(18:37) = squeeze(((qr1_plot(:,4) - qr1_plot(:,1))./(qr1_plot(:,4) + qr1_plot(:,1))));
+clear fa_plot qr1_plot
 
 load(FileToLoad{3});
 for k = 1:6
     fa_plot(:,k) = squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1)));
+    qr1_plot(:,k) = 1./squeeze(squeeze(mean(all_profile.qt1(21:80,k,:),1)));
 end
+FA_SLFII_LI(38:60) = squeeze(((fa_plot(:,5) - fa_plot(:,2))./(fa_plot(:,5) + fa_plot(:,2))));
 FA_SLFIII_LI(38:60) = squeeze(((fa_plot(:,6) - fa_plot(:,3))./(fa_plot(:,6) + fa_plot(:,3))));
-clear fa_plot
+qR1_SLFI_LI(38:60) = squeeze(((qr1_plot(:,4) - qr1_plot(:,1))./(qr1_plot(:,4) + qr1_plot(:,1))));
+clear fa_plot qr1_plot
 
 load(FileToLoad{4});
 for k = 1:6
     fa_plot(:,k) = squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1)));
+    qr1_plot(:,k) = 1./squeeze(squeeze(mean(all_profile.qt1(21:80,k,:),1)));
 end
+FA_SLFII_LI(61:82) = squeeze(((fa_plot(:,5) - fa_plot(:,2))./(fa_plot(:,5) + fa_plot(:,2))));
 FA_SLFIII_LI(61:82) = squeeze(((fa_plot(:,6) - fa_plot(:,3))./(fa_plot(:,6) + fa_plot(:,3))));
+qR1_SLFI_LI(61:82) = squeeze(((qr1_plot(:,4) - qr1_plot(:,1))./(qr1_plot(:,4) + qr1_plot(:,1))));
+clear fa_plot qr1_plot
+
+%% Calculate correlation (replicating Supplementary Table 3)
+[r(1,1),p(1,1)] = corr(transpose(volume_SLFIII_LI), transpose(FA_SLFII_LI));
+[r(1,2),p(1,2)] = corr(transpose(volume_SLFIII_LI), transpose(FA_SLFIII_LI));
+[r(1,3),p(1,3)] = corr(transpose(volume_SLFIII_LI), transpose(qR1_SLFI_LI));
+[r(2,2),p(2,2)] = corr(transpose(FA_SLFII_LI), transpose(FA_SLFIII_LI));
+[r(2,3),p(2,3)] = corr(transpose(FA_SLFII_LI), transpose(qR1_SLFI_LI));
+[r(3,3),p(3,3)] = corr(transpose(FA_SLFIII_LI), transpose(qR1_SLFI_LI));
 
 %% Create a scatter plot
 color{1} = [0, 0.4470, 0.7410];
