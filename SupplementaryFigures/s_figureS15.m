@@ -7,7 +7,10 @@ function s_figureS15
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/FAqR1_Main/
+cd ../Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../FAqR1_Main/
 
 FileToLoad{1}='CH_FAqR1_main.mat';
 FileToLoad{2}='ADO_FAqR1_main.mat';
@@ -15,9 +18,8 @@ FileToLoad{3}='ADU_FAqR1_main.mat';
 FileToLoad{4}='SEN_FAqR1_main.mat';
 
 load(FileToLoad{1});
-
-male = [1:3 6:9 14 16:17];
-female = [4:5 10:13 15];
+male = find(sex.CH == 1);
+female = find(sex.CH == 2);
 
 % Calculate FA averaged from node 21 to node 80
 for k = 1:6
@@ -31,11 +33,16 @@ fa_mean(:,2,1) = mean(fa_plot(female,:),1);
 fa_std(:,2,1) = std(fa_plot(female,:), 0, 1);
 fa_ser(:,2,1) = fa_std(:,2,1)./sqrt(length(fa_plot(female,:)));
 
+% Perform two-sample t-test
+for i = 1:6
+[~,p(i,1),~,stats{i,1}] = ttest2(fa_plot(male,i), fa_plot(female,i));
+end
+
 clear male female fa_plot all_profile
 
 load(FileToLoad{2});
-male = [1:2 4:5 8 11:12 14 16 20];
-female = [3 6:7 9:10 13 15 17:19];
+male = find(sex.ADO == 1);
+female = find(sex.ADO == 2);
 
 for k = 1:6
     fa_plot(:,k) = squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1)));
@@ -48,11 +55,16 @@ fa_mean(:,2,2) = mean(fa_plot(female,:),1);
 fa_std(:,2,2) = std(fa_plot(female,:), 0, 1);
 fa_ser(:,2,2) = fa_std(:,2,2)./sqrt(length(fa_plot(female,:)));
 
+% Perform two-sample t-test
+for i = 1:6
+[~,p(i,2),~,stats{i,2}] = ttest2(fa_plot(male,i), fa_plot(female,i));
+end
+
 clear male female fa_plot all_profile
 
 load(FileToLoad{3});
-male = [1:3 5 7 14 16 18 21:23];
-female = [4 6 8:13 15 17 19:20];
+male = find(sex.ADU == 1);
+female = find(sex.ADU == 2);
 
 for k = 1:6
     fa_plot(:,k) = squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1)));
@@ -65,11 +77,16 @@ fa_mean(:,2,3) = mean(fa_plot(female,:),1);
 fa_std(:,2,3) = std(fa_plot(female,:), 0, 1);
 fa_ser(:,2,3) = fa_std(:,2,3)./sqrt(length(fa_plot(female,:)));
 
+% Perform two-sample t-test
+for i = 1:6
+[~,p(i,3),~,stats{i,3}] = ttest2(fa_plot(male,i), fa_plot(female,i));
+end
+
 clear male female fa_plot all_profile
 
 load(FileToLoad{4});
-male = [1:2 5 7 9 13 15 17:19];
-female = [3:4 6 8 10:12 14 16 20:22];
+male = find(sex.SEN == 1);
+female = find(sex.SEN == 2);
 
 for k = 1:6
     fa_plot(:,k) = squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1)));
@@ -81,6 +98,18 @@ fa_ser(:,1,4) = fa_std(:,1,4)./sqrt(length(fa_plot(male,:)));
 fa_mean(:,2,4) = mean(fa_plot(female,:),1);
 fa_std(:,2,4) = std(fa_plot(female,:), 0, 1);
 fa_ser(:,2,4) = fa_std(:,2,4)./sqrt(length(fa_plot(female,:)));
+
+% Perform two-sample t-test
+for i = 1:6
+[~,p(i,4),~,stats{i,4}] = ttest2(fa_plot(male,i), fa_plot(female,i));
+end
+
+% Summarize t-statistics
+for kk = 1:6
+    for jj = 1:4
+      tvalue(kk,jj) = stats{kk,jj}.tstat;     
+    end
+end
 
 groupnames = {'Left SLF I', 'Left SLF II', 'Left SLF III', 'Right SLF I', 'Right SLF II', 'Right SLF III'};
 ordernum = [1 4 2 5 3 6];
