@@ -10,7 +10,10 @@ function s_figureS13_right
 
 addpath(genpath('..'));
 
-cd ../Data/FAqR1_Main/
+cd ../Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../FAqR1_Main/
 
 FileToLoad{1}='CH_FAqR1_main.mat';
 FileToLoad{2}='ADO_FAqR1_main.mat';
@@ -20,16 +23,17 @@ FileToLoad{4}='SEN_FAqR1_main.mat';
 for i = 1:4
     % Load data
     load(FileToLoad{i});
+    
     % Select right-handed participants
     switch i
         case 1
-            RH_subj = [1:15 17];
+            RH_subj = find(handedness.CH == 1);
         case 2
-            RH_subj = [1:2 4 7:11 13:20];
+            RH_subj = find(handedness.ADO == 1);
         case 3
-            RH_subj = [5:7 9:11 13:17 19:22];
+            RH_subj = find(handedness.ADU == 1);
         case 4
-            RH_subj = [1:11 13:17 19:21];
+            RH_subj = find(handedness.SEN == 1);
     end
     
     % Compute qR1 averaged from node 21 to node 80
