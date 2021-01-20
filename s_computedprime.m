@@ -2,6 +2,9 @@ function [d] = s_computedprime(x1, x2);
 
 % Compute paired d-prime
 % https://jp.mathworks.com/matlabcentral/fileexchange/62957-computecohen_d-x1-x2-varargin
+% 
+% Reference: Bettinardi, R. G. (2021). computeCohen_d. MATLAB central file
+% exchange. 
 
 mean_x1  = nanmean(x1);
 mean_x2  = nanmean(x2);
