@@ -8,6 +8,8 @@ function s_figureS21
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
+addpath(genpath('..'));
+
 cd ../Data/FAqR1_ExclusiveROI/
 
 FileToLoad{1}='CH_FAqR1_exclusiveROI.mat';

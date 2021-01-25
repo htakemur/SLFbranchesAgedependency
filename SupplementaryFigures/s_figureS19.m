@@ -8,6 +8,8 @@ function s_figureS19
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
+addpath(genpath('..'));
+
 cd ../Data/TractVolume_ExclusiveROI/
 
 FileToLoad{1}='CH_tractvolume_exclusiveROI.mat';
