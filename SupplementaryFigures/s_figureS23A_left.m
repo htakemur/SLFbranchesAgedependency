@@ -8,7 +8,11 @@ function s_figureS23A_left
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/TractVolume_Main/
+% Load data
+cd ../Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../TractVolume_Main/
 
 FileToLoad{1}='ADO_tractvolume_main.mat';
 
@@ -19,7 +23,7 @@ tractvolume_std(:,1) = std(tractvolume, 0, 2);
 tractvolume_ser(:,1) = tractvolume_std(:,1)./sqrt(length(tractvolume));
 
 % Compute summary statistics in the subgroup analysis
-age_subgroup = [1:5 7 10 12 14:15 17:20];
+age_subgroup = find(age.ADO > 11); % chose participants older than 11 years old
 tractvolume_mean(:,2) = mean(tractvolume(:,age_subgroup),2);
 tractvolume_std(:,2) = std(tractvolume(:, age_subgroup), 0, 2);
 tractvolume_ser(:,2) = tractvolume_std(:,2)./sqrt(length(tractvolume(:, age_subgroup)));

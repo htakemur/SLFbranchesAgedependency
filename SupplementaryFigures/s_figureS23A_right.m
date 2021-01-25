@@ -9,7 +9,10 @@ function s_figureS23A_right
 % Hiromasa Takemura, NICT CiNet BIT
 
 % Load data
-cd ../Data/FAqR1_Main/
+cd ../Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../FAqR1_Main/
 
 FileToLoad{1}='ADO_FAqR1_main.mat';
 load(FileToLoad{1});
@@ -23,7 +26,7 @@ qr1_std(:,1) = std(qr1_plot, 0, 1);
 qr1_ser(:,1) = qr1_std(:,1)./sqrt(length(qr1_plot));
 
 % Compute summary statistics in the subgroup analysis
-age_subgroup = [1:5 7 10 12 14:15 17:20];
+age_subgroup = find(age.ADO > 11); % chose participants older than 11 years old
 qr1_mean(:,2) = mean(qr1_plot(age_subgroup,:),1);
 qr1_std(:,2) = std(qr1_plot(age_subgroup,:), 0, 1);
 qr1_ser(:,2) = qr1_std(:,2)./sqrt(length(qr1_plot(age_subgroup,:)));

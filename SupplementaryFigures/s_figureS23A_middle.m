@@ -8,7 +8,11 @@ function s_figureS23A_middle
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/FAqR1_Main/
+% Load data
+cd ../Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../FAqR1_Main/
 
 FileToLoad{1}='ADO_FAqR1_main.mat';
 
@@ -24,7 +28,7 @@ fa_std(:,1) = std(fa_plot, 0, 1);
 fa_ser(:,1) = fa_std(:,1)./sqrt(length(fa_plot));
 
 % Compute summary statistics in the subgroups
-age_subgroup = [1:5 7 10 12 14:15 17:20];
+age_subgroup = find(age.ADO > 11); % chose participants older than 11 years old
 fa_mean(:,2) = mean(fa_plot(age_subgroup,:),1);
 fa_std(:,2) = std(fa_plot(age_subgroup,:), 0, 1);
 fa_ser(:,2) = fa_std(:,2)./sqrt(length(fa_plot(age_subgroup,:)));
