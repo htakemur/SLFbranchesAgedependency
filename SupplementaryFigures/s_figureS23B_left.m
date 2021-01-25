@@ -8,13 +8,19 @@ function s_figureS23B_left
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/TractVolume_Main/
+addpath(genpath('..'));
+
+% Load data
+cd ../Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../TractVolume_Main/
 
 FileToLoad{1}='SEN_tractvolume_main.mat';
 
 % Calculate summary statistics in each subgroup
-group_1 = [1 4:6 14 16:21];
-group_2 = [2:3 7:13 15 22];
+group_1 = find(age.SEN < 63);
+group_2 = find(age.SEN > 63);
 
 load(FileToLoad{1});
 tractvolume_mean(:,1) = mean(tractvolume(:, group_1),2);
@@ -24,6 +30,12 @@ tractvolume_ser(:,1) = tractvolume_std(:,1)./sqrt(length(tractvolume(:, group_1)
 tractvolume_mean(:,2) = mean(tractvolume(:, group_2),2);
 tractvolume_std(:,2) = std(tractvolume(:, group_2), 0, 2);
 tractvolume_ser(:,2) = tractvolume_std(:,2)./sqrt(length(tractvolume(:, group_2)));
+
+% Calculate effect size and perform t-test
+for k = 1:6
+[~,p(k),ci{k},stats{k}] = ttest(transpose(tractvolume(k, group_1)),transpose(tractvolume(k, group_2)));
+[d(k)] = s_computedprime(transpose(tractvolume(k, group_1)),transpose(tractvolume(k, group_2)));
+end
 
 % Plot results
 h = bar(tractvolume_mean);

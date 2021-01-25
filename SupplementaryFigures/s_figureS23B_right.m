@@ -8,14 +8,21 @@ function s_figureS23B_right
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/FAqR1_Main/
+addpath(genpath('..'));
+
+% Load data
+cd ../Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../FAqR1_Main/
 
 FileToLoad{1}='SEN_FAqR1_main.mat';
 
 % Calculate summary statistics in each subgroups
 load(FileToLoad{1});
-group_1 = [1 4:6 14 16:21];
-group_2 = [2:3 7:13 15 22];
+group_1 = find(age.SEN < 63);
+group_2 = find(age.SEN > 63);
+
 for k = 1:6
     qr1_plot(:,k) = 1./squeeze(squeeze(mean(all_profile.qt1(21:80,k,:),1)));
 end
@@ -27,6 +34,12 @@ qr1_ser(:,1) = qr1_std(:,1)./sqrt(length(qr1_plot(group_1,:)));
 qr1_mean(:,2) = mean(qr1_plot(group_2,:),1);
 qr1_std(:,2) = std(qr1_plot(group_2,:), 0, 1);
 qr1_ser(:,2) = qr1_std(:,2)./sqrt(length(qr1_plot(group_2,:)));
+
+% Calculate effect size and perform t-test
+for k = 1:6
+[~,p(k),ci{k},stats{k}] = ttest(qr1_plot(group_1,k),qr1_plot(group_2,k));
+[d(k)] = s_computedprime(qr1_plot(group_1,k),qr1_plot(group_2,k));
+end
 
 % Plot Results
 h = bar(qr1_mean);

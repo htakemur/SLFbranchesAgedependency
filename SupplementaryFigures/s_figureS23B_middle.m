@@ -8,14 +8,21 @@ function s_figureS23B_middle
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
-cd ../Data/FAqR1_Main/
+addpath(genpath('..'));
+
+% Load data
+cd ../Data/DatasetInfo/
+load DatasetInformation.mat
+
+cd ../FAqR1_Main/
 
 FileToLoad{1}='SEN_FAqR1_main.mat';
 
-% Calculate summary statistics in each subgroups
+% Calculate summary statistics in each subgroup
 load(FileToLoad{1});
-group_1 = [1 4:6 14 16:21];
-group_2 = [2:3 7:13 15 22];
+group_1 = find(age.SEN < 63);
+group_2 = find(age.SEN > 63);
+
 for k = 1:6
     fa_plot(:,k) = squeeze(squeeze(mean(all_profile.fa(21:80,k,:),1)));
 end
@@ -27,6 +34,12 @@ fa_ser(:,1) = fa_std(:,1)./sqrt(length(fa_plot(group_1,:)));
 fa_mean(:,2) = mean(fa_plot(group_2,:),1);
 fa_std(:,2) = std(fa_plot(group_2,:), 0, 1);
 fa_ser(:,2) = fa_std(:,2)./sqrt(length(fa_plot(group_2,:)));
+
+% Calculate effect size and perform t-test
+for k = 1:6
+[~,p(k),ci{k},stats{k}] = ttest(fa_plot(group_1,k),fa_plot(group_2,k));
+[d(k)] = s_computedprime(fa_plot(group_1,k),fa_plot(group_2,k));
+end
 
 % Plot Results
 h = bar(fa_mean);
