@@ -19,7 +19,7 @@ The part of the function has been also incorporated from MATLAB file exchange (b
 
 Dependency: MATLAB Statistics and Machine Learning Toolbox.
 
-## Organization of folders and code
+## Organization of folders and codes
 
 Codes_YeatmanLifespanrepository: Codes incoportated from Jason Yeatman's repository (https://github.com/jyeatman/lifespan)
 
