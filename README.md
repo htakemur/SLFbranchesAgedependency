@@ -21,7 +21,7 @@ Dependency: MATLAB Statistics and Machine Learning Toolbox.
 
 Organization of folders and code: 
 
-Codes_YeatmanLifespanrepository: Codes incoportated from Jason Yeatman's repository: https://github.com/jyeatman/lifespan
+Codes_YeatmanLifespanrepository: Codes incoportated from Jason Yeatman's repository (https://github.com/jyeatman/lifespan)
 
 Data/Datasetinfo: Anonymized data on participant's age, sex and handedness
 
