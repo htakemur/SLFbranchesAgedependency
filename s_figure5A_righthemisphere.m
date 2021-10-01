@@ -2,8 +2,8 @@ function s_figure5A_righthemisphere
 
 % Perform multiple linear regression analysis on FA along the right SLF I, by excluding the variance of the FA along the SLF I and II. The plot the residual FA in each group as a bar plot. This script aims to reproduce the right panel of Figure 5A in a following article:
 %
-% Amemiya, K., Naito, E. & Takemura, H. (2021)
-%  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
+% Amemiya, K., Naito, E. & Takemura, H. (2021) Age dependency and lateralization in the 
+% three branches of the human superior longitudinal fasciculus. Cortex, 139, 116-133.
 %
 % This code has dependency on MATLAB Statistics and Machine Learning Toolbox.
 %

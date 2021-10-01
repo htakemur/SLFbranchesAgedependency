@@ -2,8 +2,7 @@
 
 This repository houses data and code for reproducing figures and statistical analyses performed in the following paper.
 
-Amemiya, K., Naito, E. & Takemura, H. (2021)
-Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. Accepted for publication in Cortex.
+Amemiya, K., Naito, E. & Takemura, H. (2021) Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. Cortex, 139, 116-133.
 
 The code was written in MATLAB2019a and tested on Ubuntu 14.04 LTS. 
 
@@ -47,7 +46,6 @@ s_figure2 ~ s_figure7: Codes for replicating figures in the main document of the
  
 Hiromasa Takemura
 
-Center for Information and Neural Networks (CiNet),
-National Institute of Information and Communications Technology
+National Institute for Physiological Sciences
 
-E-Mail: htakemur [XXX] nict.go.jp (Replace [XXX] to @)
+E-Mail: htakemur [XXX] nips.ac.jp (Replace [XXX] to @)

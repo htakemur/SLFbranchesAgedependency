@@ -3,8 +3,8 @@ function s_figureS8
 % Create the scatter plot comparing SLF I/II/III tract volume between left and right hemispheres.
 % This script aims to reproduce Supplementary Figure 8 in a following article:
 %
-% Amemiya, K., Naito, E. & Takemura, H. (2021)
-%  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
+% Amemiya, K., Naito, E. & Takemura, H. (2021) Age dependency and lateralization in the 
+% three branches of the human superior longitudinal fasciculus. Cortex, 139, 116-133.
 %
 % This codes use functions derived from this repository (by Jason Yeatman): https://github.com/jyeatman/lifespan
 %

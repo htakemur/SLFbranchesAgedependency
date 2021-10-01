@@ -3,8 +3,8 @@ function s_figureS10_left
 % Plot the spatial profile of the laterality index (LI) of fractional anisotropy (FA) along SLF I, II, and III in each age group.
 % This script aims to reproduce the left panel of Supplementary Figure 10 in a following article:
 %
-% Amemiya, K., Naito, E. & Takemura, H. (2021)
-%  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
+% Amemiya, K., Naito, E. & Takemura, H. (2021) Age dependency and lateralization in the 
+% three branches of the human superior longitudinal fasciculus. Cortex, 139, 116-133.
 %
 % Hiromasa Takemura, NICT CiNet BIT
 

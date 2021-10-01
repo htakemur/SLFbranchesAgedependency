@@ -2,8 +2,8 @@ function s_figureS17
 % Create a scatter plot comparing laterality index (LI) of SLF III volume and SLF III fractional anisotropy (FA).
 % This script aims to reproduce Supplementary Figure 17 and Supplementary Table 3 in a following article:
 %
-% Amemiya, K., Naito, E. & Takemura, H. (2021)
-%  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
+% Amemiya, K., Naito, E. & Takemura, H. (2021) Age dependency and lateralization in the 
+% three branches of the human superior longitudinal fasciculus. Cortex, 139, 116-133.
 %
 % Hiromasa Takemura, NICT CiNet BIT
 

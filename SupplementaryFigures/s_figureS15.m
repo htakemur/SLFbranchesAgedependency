@@ -2,8 +2,8 @@ function s_figureS15
 % Create bar plots comparing fractional anisotropy (FA) of SLF I/II/III between male and female participants.
 % This script aims to reproduce Supplementary Figure 15 and Supplementary Table 2 in a following article:
 %
-% Amemiya, K., Naito, E. & Takemura, H. (2021)
-%  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
+% Amemiya, K., Naito, E. & Takemura, H. (2021) Age dependency and lateralization in the 
+% three branches of the human superior longitudinal fasciculus. Cortex, 139, 116-133.
 %
 % Hiromasa Takemura, NICT CiNet BIT
 

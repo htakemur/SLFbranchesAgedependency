@@ -2,8 +2,8 @@ function s_figure5B_lefthemisphere
 
 % Perform multiple linear regression analysis on FA along the left SLF I, by excluding the variance of the FA along the SLF I and II, and then plot the age-dependency curve of residual FA. This script aims to reproduce the left panel of Figure 5B in a following article:
 %
-% Amemiya, K., Naito, E. & Takemura, H. (2021)
-%  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
+% Amemiya, K., Naito, E. & Takemura, H. (2021) Age dependency and lateralization in the 
+% three branches of the human superior longitudinal fasciculus. Cortex, 139, 116-133.
 %
 % This codes use functions derived from this repository (by Jason Yeatman): https://github.com/jyeatman/lifespan
 %

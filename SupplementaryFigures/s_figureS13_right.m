@@ -3,8 +3,8 @@ function s_figureS13_right
 % Plot mean and standard deviation of the lateralization index of SLF I, II, and III qR1 in each age group, by only including right-handed participants.
 % This script aims to reproduce the right panel of Supplemenary Figure 13 in a following article:
 %
-% Amemiya, K., Naito, E. & Takemura, H. (2021)
-%  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
+% Amemiya, K., Naito, E. & Takemura, H. (2021) Age dependency and lateralization in the 
+% three branches of the human superior longitudinal fasciculus. Cortex, 139, 116-133.
 %
 % Hiromasa Takemura, NICT CiNet BIT
 

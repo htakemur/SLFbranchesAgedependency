@@ -3,8 +3,8 @@ function s_figureS23B_right
 % Create a bar plot comparing senior subgroup analysis and main analysis on SLF quantitative R1 (qR1).
 % This script aims to reproduce the right panel of Supplementary Figure 23B in a following article:
 %
-% Amemiya, K., Naito, E. & Takemura, H. (2021)
-%  Age dependency and lateralization in the three branches of the human superior longitudinal fasciculus. In revision.
+% Amemiya, K., Naito, E. & Takemura, H. (2021) Age dependency and lateralization in the 
+% three branches of the human superior longitudinal fasciculus. Cortex, 139, 116-133.
 %
 % Hiromasa Takemura, NICT CiNet BIT
 
